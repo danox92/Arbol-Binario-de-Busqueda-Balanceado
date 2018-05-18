@@ -1,7 +1,0 @@
-organization=danox92-github
-projectKey=arbol
-serverUrl=https://sonarcloud.io
-serverVersion=7.2.0.12086
-dashboardUrl=https://sonarcloud.io/dashboard/index/arbol
-ceTaskId=AWNpSLTAXXdD3VzWK0A1
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AWNpSLTAXXdD3VzWK0A1

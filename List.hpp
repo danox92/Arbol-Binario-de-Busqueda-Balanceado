@@ -4,9 +4,9 @@
 #include <iostream>
 #include <functional>
 #include "Nodo.hpp"
-#include "../src/CommonExc.hpp"
+#include "CommonExc.hpp"
 
-using namespace std;
+
 
 template<class DATO> class List;
 template<class DATO> ostream& operator<<(ostream& os, const List<DATO>& v);
@@ -23,26 +23,26 @@ public:
     List(function<DATO (int)>, int);
     // ^ Genera una lista a partir de una funcion y un tamaño
     virtual ~List(void);
-    inline bool isEmpty(void) const;
+    bool isEmpty(void) const;
     // ^ Indica si esta vacia
     friend ostream& operator<< <>(ostream & os, const List<DATO>&);
     DATO operator[](int pos) const;
     DATO& operator[](int pos);
     List<DATO>& insert(DATO, int);
     // ^ inserta un dato en la determinada posicion
-    inline List<DATO>& cons(DATO);
+    List<DATO>& cons(DATO);
     // ^ Añade un elemento al principio
-    inline List<DATO>& snoc(DATO);
+    List<DATO>& snoc(DATO);
     // ^ Añade un elemento al final
-    inline DATO head(void) const;
+    DATO head(void) const;
     // ^ Obserbamos el primer elemento
-    inline DATO last(void) const;
+    DATO last(void) const;
     // ^ Observamos el ultimo elemento
-    inline DATO pop(void);
+    DATO pop(void);
     // ^ Hacemos pop del final de la lista
-    inline List<DATO>& push(DATO);
+    List<DATO>& push(DATO);
     // ^ Ponemos al final de la lista push ≡ snoc
-    inline DATO popFront(void);
+    DATO popFront(void);
     // ^ Hacemos un pop al principio de la lista
     int length(void);
     // ^ Devuelve el tamaño de la lista
@@ -83,7 +83,7 @@ List<DATO>::~List(void) {
 }
 
 template <class DATO>
-bool List<DATO>::isEmpty(void) const {
+inline bool List<DATO>::isEmpty(void) const {
     if (inicio_ == nullptr)
         return true;
     else
@@ -140,7 +140,7 @@ List<DATO>& List<DATO>::insert(DATO d, int pos){
             count++;
         }
     }
-    if (not seted)
+    if (! seted)
         throw OutRange("List: insert");
     return *this;
 }
@@ -158,7 +158,7 @@ void List<DATO>::insertEmpty(DATO dato) {
 }
 
 template <class DATO>
-List<DATO>& List<DATO>::cons(DATO dato) {
+inline List<DATO>& List<DATO>::cons(DATO dato) {
     if (isEmpty())
         insertEmpty(dato);
     else {
@@ -175,7 +175,7 @@ List<DATO>& List<DATO>::cons(DATO dato) {
 }
 
 template <class DATO>
-List<DATO>& List<DATO>::snoc(DATO dato) {
+inline List<DATO>& List<DATO>::snoc(DATO dato) {
     if (isEmpty())
         insertEmpty(dato);
     else {
@@ -192,22 +192,22 @@ List<DATO>& List<DATO>::snoc(DATO dato) {
 }
 
 template <class DATO>
-List<DATO>& List<DATO>::push(DATO dato) {
+inline List<DATO>& List<DATO>::push(DATO dato) {
     return snoc(dato);
 }
 
 template <class DATO>
-DATO List<DATO>::head(void) const {
+inline DATO List<DATO>::head(void) const {
     return inicio_->getDato();
 }
 
 template <class DATO>
-DATO List<DATO>::last(void) const {
+inline DATO List<DATO>::last(void) const {
     return fin_->getDato();
 }
 
 template <class DATO>
-DATO List<DATO>::pop(void) {
+inline DATO List<DATO>::pop(void) {
     if (inicio_==fin_) {
         if (inicio_ == nullptr)
             throw EmptyContainer("List: pop");
@@ -227,7 +227,7 @@ DATO List<DATO>::pop(void) {
 }
 
 template <class DATO>
-DATO List<DATO>::popFront(void) {
+inline DATO List<DATO>::popFront(void) {
     if (inicio_==fin_) {
         if (inicio_ == nullptr)
             throw EmptyContainer("List: push");

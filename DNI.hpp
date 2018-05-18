@@ -5,8 +5,6 @@
 #include <iostream>
 #include "Counter.hpp"
 
-using namespace std;
-
 
 class DNI
 {
@@ -22,12 +20,9 @@ public:
 
     DNI(int i,char l): numDNI(i),let(l){}
 
-    DNI(int i): numDNI(i){
-         let ="TRWAGMYFPDXBNJZSQVHLCKE"[numDNI % 23];
-    }
-
     virtual ~DNI() {};
-    operator int() const { return numDNI;};
+
+    explicit operator int() const { return numDNI;};
 
 
     bool operator==(const DNI& dni) {

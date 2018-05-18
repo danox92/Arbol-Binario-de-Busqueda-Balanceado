@@ -5,25 +5,24 @@
 #include <vector>
 
 #include "DNI.hpp"
-#include "../include/TreeAVL.hpp"
-#include "Stats.hpp"
+#include "TreeAVL.hpp"
 
-Counter DNI::counter;
 
 using namespace std;
 
-int main(int argc, char *argv[]) {
+Counter DNI::counter;
+
+int main() {
 
   TreeAVL<int, int> tree;
 
-  int option = 1,c;
+  int option = 1;
+  int c;
 
-
-  cout << "1.Modo Demostracion"<<endl;
-  cout << "2.Modo Estadistico"<<endl;
-  cout << "Seleccione un Modo:";
+  cout << "1.Modo Demostracion\n"
+  "2.Modo Estadistico\n"
+  "Seleccione un Modo:"<< endl;
   cin >> c;
-  cout << endl;
 
   switch ( c ){
     case 1:
@@ -50,6 +49,8 @@ int main(int argc, char *argv[]) {
             tree.eliminar(aux);
             tree.byLevels();
             break;
+          default:  
+  			break;  
           }
       }
       break;
@@ -78,8 +79,8 @@ int main(int argc, char *argv[]) {
           tree.insert(0, vec[i]);
         }
 
-        cout << setw(20) << "N" << setw(10) << "Pruebas" << setw(10)  << "Minimo" << setw(10) << "Medio" << setw(10) << "Maximo" << endl;
-        cout << setw(10) << "Busqueda" << setw(10) << tam << setw(10) << pruebas;
+        cout << setw(20) << "N" << setw(10) << "Pruebas" << setw(10)  << "Minimo" << setw(10) << "Medio" << setw(10) << "Maximo\n" 
+        << setw(10) << "Busqueda" << setw(10) << tam << setw(10) << pruebas;
         for (int i = 0; i < pruebas; i++) {
           DNI::counter.start();
           tree.search(vec[rand()%pruebas]);
@@ -104,6 +105,8 @@ int main(int argc, char *argv[]) {
 
       }
     break;
+   default:
+   	break;
  }
 
   return 0;

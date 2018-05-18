@@ -1,7 +1,7 @@
 CC=g++
-CXXFLAGS=-g 
+CXXFLAGS=-g -std=c++11
 
-OBJS = src/main.cpp
+OBJS = main.cpp
 
 all: ${OBJS}
 	$(CC) $(CXXFLAGS) -o P7 ${OBJS}

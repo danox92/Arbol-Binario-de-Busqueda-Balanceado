@@ -2,7 +2,7 @@
 #include <cmath>
 #include <iostream>
 
-using namespace std;
+
 
 template <class D, class K>
 class NodeAVL {

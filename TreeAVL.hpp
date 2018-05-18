@@ -116,6 +116,9 @@ void TreeAVL<D,K>::insertarRebalanceaIzq(NodeAVL<D,K> *& nodo, bool &crece) {
       rotationII(nodo);
     else rotationID(nodo);
     crece = false;
+    break;
+  default:  
+  	break;
   }
 }
 
@@ -134,6 +137,9 @@ void TreeAVL<D,K>::insertarRebalanceaDch(NodeAVL<D,K> *& nodo, bool &crece) {
       rotationDD(nodo);
     else rotationDI(nodo);
     crece = false;
+    break;
+  default:  
+  	break;  
   }
 }
 
@@ -237,6 +243,9 @@ void TreeAVL<D,K>::eliminarRebalanceaDch(NodeAVL<D,K> *& nodo, bool &unGrow) {
     break;
   case -1:
     nodo->balance(0);
+    break;
+  default:  
+  	break;  
   }
 }
 
@@ -257,6 +266,9 @@ void TreeAVL<D,K>::eliminarRebalanceaIzq(NodeAVL<D,K> *& nodo, bool &unGrow) {
     break;
   case 1:
     nodo->balance(0);
+    break;
+  default:  
+  	break;  
   }
 }
 
@@ -280,14 +292,6 @@ void TreeAVL<D,K>::byLevels() {
       NodeAVL<D,K> * aux = parents.pop();
       if (aux != nullptr) {
             cout << "[" << aux->key() << "]";
-       /* cout << "[" << aux->key() << ":";
-        if (aux->balance() > 0)
-          cout << "+" << aux->balance();
-        else if (aux->balance() < 0)
-          cout << aux->balance();
-        else
-          cout << "±0";
-        cout << "]";*/
       }
       else
         cout << "[.]";
